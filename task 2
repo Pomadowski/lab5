@@ -1,0 +1,34 @@
+#include <cstdio>
+#include <cstdlib>
+#include <iostream>
+#include <stdio.h>
+
+
+
+
+void allocateClear() { 
+int* arr = new int[100];
+ std::cout << "Allocated memory:" << arr << std::endl;
+ delete arr;
+}
+
+
+void allocateNoClear() { 
+int* arr = new int[100];
+ std::cout << "Allocated memory:" << arr << std::endl;
+
+}
+
+
+
+
+int main(){
+	for(int i = 0; i<10; i++){
+		allocateClear();
+	}
+		for(int i = 0; i<10; i++){
+		allocateNoClear();
+	}
+	return 0;
+	
+}
