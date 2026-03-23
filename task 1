@@ -1,0 +1,42 @@
+#include <cstdio>
+#include <cstdlib>
+#include <iostream>
+#include <stdio.h>
+
+
+
+int incValue(int a){
+	a++;
+	return a;	
+	
+	
+}
+
+int incReference(int a){
+	int& ref = a;
+	ref++;
+	return ref;	
+	
+}
+
+int incPointer(int a){
+	int* ptr;
+	*ptr = 	a;
+	*ptr++;
+	return *ptr;
+	delete ptr;
+	
+}
+
+int main(){
+	int a = 10;
+	a = incValue(a);
+	printf("%d \n", a);
+	a = incReference(a);
+	printf("%d \n", a);
+	a = incPointer(a);
+	printf("%d \n", a);
+	
+	return 0;
+	
+}
