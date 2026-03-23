@@ -1,0 +1,75 @@
+#include <cstdio>
+#include <cstdlib>
+#include <iostream>
+#include <stdio.h>
+
+class storage {
+	private:
+		int DatabaseSize=0;
+		int *DatabaseAddress;
+	public:
+		void enterSize(){
+			int userInput;
+			std::cin >> userInput ;
+			DatabaseAddress = new int[userInput];
+			DatabaseSize=userInput;
+			printf("%d \n", DatabaseAddress);
+			
+		}
+		void enterValue(){
+			int slotNumber;
+			int inputValue;
+			int* slotAddress;
+			std::cout << "slot: \n";
+			std::cin >> slotNumber;
+			std::cout << "value: \n";
+			std::cin >> inputValue;
+			printf("debug 1 \n");
+			slotAddress = DatabaseAddress + slotNumber;
+			printf("debug 2 \n");
+			
+			*slotAddress=inputValue;
+			
+			printf("debug 3 \n");
+		}
+		int getElement(int slotNumber){
+			int* slotAddress;
+			slotAddress = DatabaseAddress + slotNumber;
+			int a = *slotAddress;
+			return a;
+		}
+		int average(){
+			float a=0;
+			int* slotAddress;
+			for(int i = DatabaseSize; i > 0; i--){
+				slotAddress = DatabaseAddress + i;
+				a = a + *slotAddress;
+			}
+			a = a / DatabaseSize;
+			return a;
+		}
+	
+};
+
+
+int main(){
+	int a;
+	storage S1;
+	S1.enterSize();
+	
+	for(int i=0; i<5 ; i++){
+	
+	S1.enterValue();
+	}	
+	printf("stored values: \n");
+	for(int i=0; i<5 ; i++){
+	a = S1.getElement(i);
+	printf("%d \n", a);
+
+	}	
+	float avg = S1.average();
+	printf("Average value: %f \n", avg);
+	return 0;
+}
+	
+	
